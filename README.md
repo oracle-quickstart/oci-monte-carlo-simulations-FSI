@@ -2,10 +2,11 @@
 FSI Monte Carlo simulator is a container based and cloud native solution that allow users to price European Vanilla Options through a Python-C++ wrapper. The solution is completelly compiled and containerized in order to easy the deployment.
 
 ## Prerequisites
-To deploy the FSI Monte Carlo simulator you need to have an OCI OKE cluster deployed and running within any intel available shape.
-Tested shapes:
+To deploy the FSI Monte Carlo simulator you need to have an OCI OKE cluster deployed and running within any intel available shape. Tested shapes:
+    
     VM.Standard.*
     BM.HPC.*
+    
 Considering to access the cluster for monitoring, configuring and testing from you laptop, OKE cluster should be deployed within public API endpoint and workers in private mode.
 
 ## Clone the Module
