@@ -4,7 +4,8 @@ FSI Monte Carlo simulator is a container based and cloud native solution that al
 ## Prerequisites
 To deploy the FSI Monte Carlo simulator you need to have an OCI OKE cluster deployed and running within any intel available shape. 
 
-Tested shapes:    
+Tested shapes:
+
     VM.Standard.*
     BM.HPC.*
     
