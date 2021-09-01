@@ -13,7 +13,7 @@ Considering to access the cluster for monitoring, configuring and testing from y
 
 In order to start the deployment, you need to access to the OKE cluster through your Clud Shell Access and copy inside the configuration files:
 
-    [ks8-deployment/rabbitmq-controller.yaml](rabbitmq-controller.yaml)
+* [ks8-deployment/rabbitmq-controller.yaml](rabbitmq-controller.yaml)
     rabbitmq-service.yaml
     loadbalancer-service.yaml
     mcv-controller.yaml
