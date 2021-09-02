@@ -41,33 +41,30 @@ mcv-controller will deploy 100 pods over the node pool selected. Please, to incr
 
     kubectl scale --replicas=[NUM_OF_REPLICAS] rc/mcv-controller
 
+After that, this client will include all the connectors and input files required to test the solution:
 
-We now need to initialize the directory with the module in it.  This makes the module aware of the OCI provider.  You can do this by running:
+    kubectl create -f mcv-client-controller.yaml
 
-    terraform init
+The solution is completelly deployed, please check that the RabbitMQ host is running accessing through the WEB GUI and all mcv-controller consumers must be connected to the tasks_in queue.
 
-This gives the following output:
+## SSH to the client
+In order to test the simulator, first of all you need to identify the name of the client pod:
 
-![](./images/02%20-%20terraform%20init.png)
+    kubectl get pods | grep mcv-client-controller
 
-## Deploy
-Now for the main attraction.  Let's make sure the plan looks good:
+Once identified the name of the pod, you can access to inside running:
 
-    terraform plan
+    kubectl exec --stdin --tty [CLIENT_POD_NAME] -- /bin/bash
 
-You'll be prompted to enter a value for `var.adminPassword` if you haven't set a default in [variables.tf](./simple/variables.tf). That gives:
+## Testing
+In order to test the simulator, first of all you need to identify the name of the client pod:
 
-![](./images/03%20-%20terraform%20plan.png)
+Client can be executed in 2 different modes:
 
-If that's good, we can go ahead and apply the deploy:
+  CLIENT_TYPE=0 --> (by default mode) Client will split the portfolio before sending the tasks to the cluster.
+  CLIENT_TYPE=1 --> Client will sent the whole portfolio to the cluster and it will be splited in sub deals by the pods aplying parent-child relationship. 
 
-    terraform apply
 
-You'll need to enter `yes` when prompted.  The apply should take about seven minutes to run.  Once complete, you'll see something like this:
-
-![](./images/04%20-%20terraform%20apply.png)
-
-When the apply is complete, the infrastructure will be deployed, but cloud-init scripts will still be running.  Those will wrap up asynchronously.  So, it'll be a few more minutes before your cluster is accessible.  Now is a good time to get a coffee.
 
 ## Connect to the Cluster
 When the `terraform apply` completed, it printed out two values.  One of those is the URL to access Couchbase Server, the other one is for Couchbase Sync Gateway.  First, let's try accessing Server on port 8091 of the public IP.  You should see this:
