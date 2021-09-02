@@ -70,13 +70,49 @@ Please, set the configuration running:
 
 Inside the client pod, you can find these portfolio examples to be used as input files:
 
-* [simulations.json](input_files/simulations.json) --> 2 simple deals
-* [simulation_50_simple.json](input_files/simulation_50_simple.json) --> 50 simple deals
+* [simulations.json](input-files/simulations.json) --> 2 simple deals
+* [simulation_50_simple.json](input-files/simulation_50_simples.json) --> 50 simple deals
+* [simulation_1000_simple.json](input-files/simulation_1000_simple.json) --> 1000 simple deals
+* [simulation_30000_simple.json](input-files/simulation_30000_simple.json) --> 30000 simple deals
+* [simulation_10_mix.json](input-files/simulation_10_mix.json) --> 10 complex deals
+* [simulation_50_mix.json](input-files/simulation_50_mix.json) --> 50 complex deals
 
+All of them are complex portfolios (build with more than one deal). Internally, each portfolio can include simple or complex deals.
 
+## Simple or complex deal examples
+Simple deal means that number of Monte Carlo simulations will be 3.000.000 or less and won't be splitable
 
+    {
+    "portfolio_id": 1000,
+    "parent_id": 0,
+    "child_id": 0,
+    "level": 0,
+    "num_sims": 3000000,
+    "underlying": 102,
+    "strike": 102,
+    "riskfreerate": 0.02,
+    "volatility": 0.01,
+    "maturity": 1,
+    "exec_time": 0
+    }
 
+Complex deal (more than 3.000.000 Monte Carlo simulations) will be splitted in sub deals and processed in pararallel:
 
+    {
+    "portfolio_id": 1000,
+    "parent_id": 0,
+    "child_id": 0,
+    "level": 0,
+    "num_sims": 9000000,
+    "underlying": 102,
+    "strike": 102,
+    "riskfreerate": 0.02,
+    "volatility": 0.01,
+    "maturity": 1,
+    "exec_time": 0
+    }
+
+In particular, this deal will be splited in 3 sub deals of 3.000.000 Monte Carlo simulatinos each one
 
 
 
