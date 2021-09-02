@@ -114,46 +114,8 @@ Complex deal (more than 3.000.000 Monte Carlo simulations) will be splitted in s
 
 In particular, this deal will be splited in 3 sub deals of 3.000.000 Monte Carlo simulatinos each one
 
+## Results
+Theroretical time of one simple task (3.000.000 Monte Carlo simulations), based on BM.HPC2.36 shape, takes 0,510ms. Simulator time is 0,523s approx.
 
-
-
-
-
-
-## Connect to the Cluster
-When the `terraform apply` completed, it printed out two values.  One of those is the URL to access Couchbase Server, the other one is for Couchbase Sync Gateway.  First, let's try accessing Server on port 8091 of the public IP.  You should see this:
-
-![](./images/05%20-%20server%20login.png)
-
-Now enter in the username (default `couchbase`) and password you specified in [variables.tf](./simple/variables.tf), or the value you entered when prompted if not defined in the file.  You should now have a view of your cluster and the services running.
-
-![](./images/06%20-%20server.png)
-
-Couchbase runs the admin interface on every node.  So, we could login to any node in the cluster to see this view.
-
-Next, let's access to Sync Gateway on port 4984 of its public IP.  You should see:
-
-![](./images/07%20-%20sync%20gateway.png)
-
-## SSH to a Node
-These machines are using Oracle Enterprise Linux (OEL).  The default login is opc.  You can SSH into the machine with a command like this:
-
-    ssh -i ~/.ssh/oci opc@<Public IP Address>
-
-Couchbase is installed under `/opt/couchbase/bin`.  You can debug deployments by investigating the cloud-init log file `/var/log/messages`.  You'll need to `sudo su` to be able to read it.
-
-![](./images/08%20-%20ssh.png)
-
-## View the Cluster in the Console
-You can also login to the web console [here](https://console.us-phoenix-1.oraclecloud.com/a/compute/instances) to view the IaaS that is running the cluster.
-
-![](./images/09%20-%20console.png)
-
-## Destroy the Deployment
-When you no longer need the deployment, you can run this command to destroy it:
-
-    terraform destroy
-
-You'll need to enter `yes` when prompted.  Once complete, you'll see something like this:
-
-![](./images/10%20-%20terraform%20destroy.png)
+## Destroy the simulator
+When you no longer need the deployment, you can delete the OKE cluster
