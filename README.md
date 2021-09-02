@@ -57,27 +57,14 @@ Once identified the name of the pod, you can access to inside running:
     kubectl exec --stdin --tty [CLIENT_POD_NAME] -- /bin/bash
 
 ## Testing
-In order to test the simulator, first of all you need to identify the name of the client pod:
-
-Client can be executed in 2 different modes:
-
-CLIENT_TYPE=0 --> (by default mode) Client will split the portfolio before sending the tasks to the cluster.
-CLIENT_TYPE=1 --> Client will sent the whole portfolio to the cluster and it will be splited in sub deals by the pods applying parent-child relationship. 
-
-Please, set the configuration running:
-
-    export CLIENT_TYPE=[0 or 1]
-
 Inside the client pod, you can find these portfolio examples to be used as input files:
 
 * [simulations.json](input-files/simulations.json) --> 2 simple deals
 * [simulation_50_simple.json](input-files/simulation_50_simples.json) --> 50 simple deals
 * [simulation_1000_simple.json](input-files/simulation_1000_simple.json) --> 1000 simple deals
 * [simulation_30000_simple.json](input-files/simulation_30000_simple.json) --> 30000 simple deals
-* [simulation_10_mix.json](input-files/simulation_10_mix.json) --> 10 complex deals
-* [simulation_50_mix.json](input-files/simulation_50_mix.json) --> 50 complex deals
 
-All of them are complex portfolios (build with more than one deal). Internally, each portfolio can include simple or complex deals.
+All of them are complex portfolios (build with more than one deal). Internally, each portfolio can include simple.
 
 To run the client and start the calculation:
 
@@ -99,24 +86,6 @@ Simple deal means that number of Monte Carlo simulations will be 3.000.000 or le
     "maturity": 1,
     "exec_time": 0
     }
-
-Complex deal (more than 3.000.000 Monte Carlo simulations) will be splitted in sub deals and processed in pararallel:
-
-    {
-    "portfolio_id": 1000,
-    "parent_id": 0,
-    "child_id": 0,
-    "level": 0,
-    "num_sims": 9000000,
-    "underlying": 102,
-    "strike": 102,
-    "riskfreerate": 0.02,
-    "volatility": 0.01,
-    "maturity": 1,
-    "exec_time": 0
-    }
-
-In particular, this deal will be splited in 3 sub deals of 3.000.000 Monte Carlo simulatinos each one
 
 ## Results
 Theroretical time of one simple task (3.000.000 Monte Carlo simulations), based on BM.HPC2.36 shape, takes 0,510ms. Simulator time is 0,523s approx.
