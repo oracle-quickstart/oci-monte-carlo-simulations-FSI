@@ -70,7 +70,16 @@ Please, set the configuration running:
 
 Inside the client pod, you can find these portfolio examples to be used as input files:
 
-* [simulations.json](input_files/simulations.json)
+* [simulations.json](input_files/simulations.json) --> 2 simple deals
+* [simulation_50_simple.json](input_files/simulation_50_simple.json) --> 50 simple deals
+
+
+
+
+
+
+
+
 
 
 
