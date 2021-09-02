@@ -61,8 +61,17 @@ In order to test the simulator, first of all you need to identify the name of th
 
 Client can be executed in 2 different modes:
 
-  CLIENT_TYPE=0 --> (by default mode) Client will split the portfolio before sending the tasks to the cluster.
-  CLIENT_TYPE=1 --> Client will sent the whole portfolio to the cluster and it will be splited in sub deals by the pods aplying parent-child relationship. 
+CLIENT_TYPE=0 --> (by default mode) Client will split the portfolio before sending the tasks to the cluster.
+CLIENT_TYPE=1 --> Client will sent the whole portfolio to the cluster and it will be splited in sub deals by the pods applying parent-child relationship. 
+
+Please, set the configuration running:
+
+    export CLIENT_TYPE=[0 or 1]
+
+Inside the client pod, you can find these portfolio examples to be used as input files:
+
+* [simulations.json](input_files/simulations.json)
+
 
 
 
