@@ -79,6 +79,10 @@ Inside the client pod, you can find these portfolio examples to be used as input
 
 All of them are complex portfolios (build with more than one deal). Internally, each portfolio can include simple or complex deals.
 
+To run the client and start the calculation:
+
+    python3 main.py [INPUTFILE]
+
 ## Simple or complex deal examples
 Simple deal means that number of Monte Carlo simulations will be 3.000.000 or less and won't be splitable
 
