@@ -13,7 +13,7 @@ spec:
         component: mcv
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/mcv:2.0.1
+        - image: iad.ocir.io/hpc_limited_availability/mcv:2.1.6
           name: mcv-container
           env:
           - name: RABBITMQ_HOST
@@ -22,3 +22,7 @@ spec:
             value: tasks_in
           - name: MIN_SIMULATIONS
             value: "3000000"
+          - name: RABBITMQ_PREFETCHCOUNT
+            value: "5"
+      nodeSelector:
+        name: HPC
