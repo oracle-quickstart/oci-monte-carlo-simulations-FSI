@@ -13,14 +13,16 @@ spec:
         component: mcv-client
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/mcv-client:1.0.7
+        - image: iad.ocir.io/hpc_limited_availability/mcv-client:2.0.0
           name: mcv-client-container
           env:
           - name: RABBITMQ_HOST
             value: rabbitmq-service
           - name: RABBITMQ_TASKQUEUE
             value: tasks_in
+          - name: RABBITMQ_TASKQUEUE_SPLITTABLE
+            value: tasks_in_splittable
+          - name: MIN_SIMULATIONS
+            value: "3000000"
           - name: CLIENT_TYPE
             value: "0"
-      nodeSelector:
-        name: HPC
