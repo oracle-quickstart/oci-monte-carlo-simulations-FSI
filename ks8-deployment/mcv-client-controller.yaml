@@ -13,7 +13,7 @@ spec:
         component: mcv-client
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/mcv-client:2.0.1
+        - image: iad.ocir.io/hpc_limited_availability/mcv-client:2.0.0
           name: mcv-client-container
           env:
           - name: RABBITMQ_HOST
@@ -26,3 +26,15 @@ spec:
             value: "3000000"
           - name: CLIENT_TYPE
             value: "0"
+          - name: SPLUNK_HOST
+            value: splunk-service
+          - name: SPLUNK_USER
+            value: admin
+          - name: SPLUNK_PASSWORD
+            value: password
+          - name: SPLUNK_INDEX
+            value: mcv_index
+          - name: SPLUNK_SOURCETYPE
+            value: mcv-tasksresult-sourcetype
+      nodeSelector:
+        name: HPC

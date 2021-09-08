@@ -2,22 +2,22 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   labels:
-    component: rabbitmq
-  name: rabbitmq-controller
+    component: splunk
+  name: splunk-controller
 spec:
   replicas: 1
   template:
     metadata:
       labels:
         app: taskQueue
-        component: rabbitmq
+        component: splunk
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/rabbitmq:latest
-          name: rabbitmq
+        - image: iad.ocir.io/hpc_limited_availability/splunk:latest
+          name: splunk
           ports:
-            - containerPort: 5672
-            - containerPort: 15672
+            - containerPort: 8000
+            - containerPort: 8089
           resources:
             limits:
               cpu: 1000m

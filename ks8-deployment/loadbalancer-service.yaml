@@ -6,10 +6,16 @@ spec:
   selector:
     app: taskQueue
   ports:
-    - name: gui
+    - name: RabbitMQ_WEB
       port: 15672
       targetPort: 15672
-    - name: tasks
+    - name: RabbitMQ_TASKS
       port: 5672
       targetPort: 5672
+    - name: Splunk_WEB
+      port: 8000
+      targetPort: 8000
+    - name: Splunk_INDEX
+      port: 8089
+      targetPort: 8089
   type: LoadBalancer
