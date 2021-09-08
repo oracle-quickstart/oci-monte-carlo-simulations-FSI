@@ -13,7 +13,7 @@ spec:
         component: mcv-client
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/mcv-client:2.0.0
+        - image: iad.ocir.io/hpc_limited_availability/mcv-client:2.0.3
           name: mcv-client-container
           env:
           - name: RABBITMQ_HOST
@@ -36,5 +36,7 @@ spec:
             value: mcv_index
           - name: SPLUNK_SOURCETYPE
             value: mcv-tasksresult-sourcetype
+          - name: REPORTING
+            value: "0"
       nodeSelector:
         name: HPC
