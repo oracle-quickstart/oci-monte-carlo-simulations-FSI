@@ -37,6 +37,6 @@ spec:
           - name: SPLUNK_SOURCETYPE
             value: mcv-tasksresult-sourcetype
           - name: REPORTING
-            value: "0"
+            value: "1"
       nodeSelector:
         name: HPC
