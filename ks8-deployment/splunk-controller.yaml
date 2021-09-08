@@ -15,6 +15,11 @@ spec:
       containers:
         - image: iad.ocir.io/hpc_limited_availability/splunk:latest
           name: splunk
+          env:
+          - name: SPLUNK_PASSWORD
+            value: password
+          - name: SPLUNK_START_ARGS
+            value: --accept-license
           ports:
             - containerPort: 8000
             - containerPort: 8089
