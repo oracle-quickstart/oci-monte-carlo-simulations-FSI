@@ -6,8 +6,10 @@ metadata:
   name: splunk-service
 spec:
   ports:
-    - name: tasks
-      port: 5672
+    - name: gui
+      port: 8000
+    - name: server
+      port: 8089
   selector:
     app: taskQueue
     component: splunk
