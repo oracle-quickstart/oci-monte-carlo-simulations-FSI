@@ -11,9 +11,10 @@ Tested shapes:
     
 Considering to access the cluster for monitoring, configuring and testing from you laptop, OKE cluster should be deployed within public API endpoint and workers in private mode.
 
-In order to start the deployment, you need to access to the OKE cluster through your Cloud Shell Access and copy inside the configuration files:
+In order to start the deployment, you need to access to the OKE cluster through your Cloud Shell Access and clone the FSI Monte Carlo Simulator github repo:
 
-* [ks8-deployment](ks8-deployment)
+    git clone https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI.git
+
 
 ## Deploy
 Based on the architecture, first deployment step is to run the RabbitMQ node:
