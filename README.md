@@ -15,6 +15,7 @@ In order to start the deployment, you need to access to the OKE cluster through 
 
     git clone https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI.git
     chmod +x oci-monte-carlo-simulations-FSI/install.sh
+    cd oci-monte-carlo-simulations-FSI/
     ./install.sh
 
 
