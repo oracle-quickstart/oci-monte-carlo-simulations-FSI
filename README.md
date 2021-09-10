@@ -33,28 +33,20 @@ In order to start the deployment, you need to access to the OKE cluster through 
 
 
 ### Deployment process (install.sh script)
-Based on the architecture, first deployment step is to run the RabbitMQ node:
+Based on the architecture, first deployment step is to run the RabbitMQ node (rabbitmq-controller.yaml).
 
-    kubectl create -f rabbitmq-controller.yaml
-
-Once created the controller, you need to deploy the RabbitMQ services that will allow you to identify the node by FQDN and solve possible issues with the ip rotation:
-
-    kubectl create -f rabbitmq-service.yaml
+Once created the controller, you need to deploy the RabbitMQ services that will allow you to identify the node by FQDN and solve possible issues with the ip rotation (rabbitmq-service.yaml).
 
 Now, your RabbitMQ host will be reacheble through "rabbitmq-service".
 By default, ports in the private subnet are not opened so, you need to set the rules in the security list to allow the communication through port 5672 fron the rest of nodes in this subnet.
 
-After that, we are setting the configuration to enable the access to the RabbitMQ WEB GUI in port 15672 and 5672 to send the valuations from out laptop. First step is to deploy the loadbalancer service that will allow foreing access through the public subnet.
-
-    kubectl create -f loadbalancer-service.yaml
+After that, we are setting the configuration to enable the access to the RabbitMQ WEB GUI in port 15672 and 5672 to send the valuations from out laptop. First step is to deploy the loadbalancer service that will allow foreing access through the public subnet (loadbalancer-service.yaml)
 
 One more time, you need to ensure that the firewall rules are correctly configured on the public security list for ports 15672 and 5672.
 
 Ready to deploy the Monte Carlo Vanilla containers, they will automatically connect to the RabbitMQ host (var RABBITMQ_HOST=rabbitmq-service).
 
-    kubectl create -f mcv-controller.yaml
-
-mcv-controller will deploy 100 pods over the node pool selected. Please, to increase the performance, ensure to set the number of pods according to the number of OCPUs in your node pool. You can scale the number of pods with:
+(mcv-controller.yaml) is going to deploy 100 pods over the node pool selected. Please, to increase the performance, ensure to set the number of pods according to the number of OCPUs in your node pool. You can scale the number of pods with:
 
     kubectl scale --replicas=[NUM_OF_REPLICAS] rc/mcv-controller
 
