@@ -34,5 +34,3 @@ spec:
          persistentVolumeClaim:
            claimName: oke-fsspvc
            readOnly: false
-      nodeSelector:
-        splunkstorage: "true"
