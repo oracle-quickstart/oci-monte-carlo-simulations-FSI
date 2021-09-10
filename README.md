@@ -23,6 +23,7 @@ Modify the FSS deployment files with your FSS parametters:
 * [PersistentVolume file](ks8-deployment/persistentVolume.yaml)
 ![](images/persistentVolume_file.png)
 
+## Deployment
 In order to start the deployment, you need to access to the OKE cluster through your Cloud Shell Access and clone the FSI Monte Carlo Simulator github repository and set the permission for the installation script:
 
     git clone https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI.git
