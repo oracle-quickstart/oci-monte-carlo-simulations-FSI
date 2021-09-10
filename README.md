@@ -56,6 +56,14 @@ After that, this client will include all the connectors and input files required
 
 The solution is completelly deployed, please check that the RabbitMQ host is running accessing through the WEB GUI and all mcv-controller consumers must be connected to the tasks_in queue.
 
+## Access your RabbitMQ console
+Run the next command to list the load balancer service to get the public IP:
+
+    kubectl get services | grep loadbalancer
+
+![]()
+
+
 ## SSH to the client
 In order to test the simulator, first of all you need to identify the name of the client pod:
 
