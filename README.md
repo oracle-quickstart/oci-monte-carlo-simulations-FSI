@@ -24,7 +24,7 @@ In order to start the deployment, you need to access to the OKE cluster through 
     ./install.sh
 
 
-## Deployment process (install.sh script)
+### Deployment process (install.sh script)
 Based on the architecture, first deployment step is to run the RabbitMQ node:
 
     kubectl create -f rabbitmq-controller.yaml
@@ -77,7 +77,7 @@ Once identified the name of the pod, you can access to inside running:
 
     kubectl exec --stdin --tty [CLIENT_POD_NAME] -- /bin/bash
 
-## Testing
+### Testing
 Inside the client pod, you can find these portfolio examples to be used as input files:
 
 * [simulations.json](input-files/simulations.json) --> 2 simple deals
@@ -91,7 +91,7 @@ To run the client and start the calculation:
 
     python3 main.py [INPUTFILE]
 
-## Simple or complex deal examples
+### Simple or complex deal examples
 Simple deal means that number of Monte Carlo simulations will be 3.000.000 or less and won't be splitable
 
     {
