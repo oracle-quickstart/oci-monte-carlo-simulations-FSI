@@ -15,6 +15,9 @@ spec:
       containers:
         - image: iad.ocir.io/hpc_limited_availability/splunk:latest
           name: splunk
+          volumeMounts:
+           - name: nfs
+             mountPath: "/opt/splunk/var/"
           env:
           - name: SPLUNK_PASSWORD
             value: password
@@ -26,5 +29,10 @@ spec:
           resources:
             limits:
               cpu: 1000m
+      volumes:
+       - name: nfs
+         persistentVolumeClaim:
+           claimName: oke-fsspvc
+           readOnly: false
       nodeSelector:
-        name: HPC
+        splunkstorage: "true"
