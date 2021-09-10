@@ -11,6 +11,7 @@ Tested shapes:
     
 Considering to access the cluster for monitoring, configuring and testing from you laptop, OKE cluster should be deployed within public API endpoint and workers in private mode.
 
+### FSS deployment
 To enable the detailed monitoring, you need to set a file system and a mount target created according to the instructions in [Announcing File Storage Service UI 2.0](https://blogs.oracle.com/cloud-infrastructure/post/announcing-file-storage-service-ui-20) and selecting the oke private network.
 
 Set up the security list for the FSS:
@@ -67,6 +68,10 @@ You can reach the RabbitMQ Management GUI: loadbalancer_publicip:15672
 
 ### Access your Splunk Management GUI
 You can reach the RabbitMQ Management GUI: loadbalancer_publicip:8000
+
+## Splunk sourcetype configuration
+Access your Splunk Management GUI and navigate to Sourcetypes configuration:
+∑∑∑∑∑∑∑∑∑∑∑∑∑∑∑∑∑
 
 ## SSH to the client
 In order to test the simulator, first of all you need to identify the name of the client pod:
