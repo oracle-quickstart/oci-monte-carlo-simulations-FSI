@@ -61,7 +61,7 @@ Run the next command to list the load balancer service to get the public IP:
 
     kubectl get services | grep loadbalancer
 
-![]()
+![](https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI/blob/main/images/loadbalancer_publicip.png)
 
 
 ## SSH to the client
