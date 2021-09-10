@@ -17,7 +17,8 @@ Set up the security list for the FSS:
 ![](https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI/blob/main/images/security_list_fss.png)
 
 Modify the FSS deployment files with your FSS parametters:
-![StorageClass file:](https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI/blob/main/images/storageClass_file.png)
+* [StorageClass file](ks8-deployment/storageClass.yaml)
+![](https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI/blob/main/images/storageClass_file.png)
 
 In order to start the deployment, you need to access to the OKE cluster through your Cloud Shell Access and clone the FSI Monte Carlo Simulator github repository and set the permission for the installation script:
 
