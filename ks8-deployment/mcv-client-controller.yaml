@@ -33,10 +33,10 @@ spec:
           - name: SPLUNK_PASSWORD
             value: password
           - name: SPLUNK_INDEX
-            value: mcv_index
+            value: main
           - name: SPLUNK_SOURCETYPE
-            value: mcv-tasksresult-sourcetype
+            value: _json
           - name: REPORTING
-            value: "1"
+            value: "0"
       nodeSelector:
         name: HPC
