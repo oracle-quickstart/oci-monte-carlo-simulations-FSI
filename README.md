@@ -64,14 +64,13 @@ Run the next command to list the load balancer service to get the public IP:
 
 ![](https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI/blob/main/images/loadbalancer_publicip.png)
 
-You can reach the RabbitMQ Management GUI: loadbalancer_publicip:15672
+You can reach the RabbitMQ Management GUI: loadbalancer_externalip:15672
 
 ### Access your Splunk Management GUI
-You can reach the RabbitMQ Management GUI: loadbalancer_publicip:8000
+You can reach the RabbitMQ Management GUI: loadbalancer_externalip:8000
 
-## Splunk sourcetype configuration
-Access your Splunk Management GUI and navigate to Sourcetypes configuration:
-∑∑∑∑∑∑∑∑∑∑∑∑∑∑∑∑∑
+#### Create the Splunk dashboard
+
 
 ## SSH to the client
 In order to test the simulator, first of all you need to identify the name of the client pod:
