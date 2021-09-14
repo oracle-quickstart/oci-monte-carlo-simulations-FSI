@@ -13,7 +13,7 @@ spec:
         component: mcv
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/mcv:2.2.2
+        - image: iad.ocir.io/hpc_limited_availability/mcv:2.2.3
           name: mcv-container
           env:
           - name: RABBITMQ_HOST
