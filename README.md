@@ -17,7 +17,7 @@ To enable the detailed monitoring, you need to set a file system and a mount tar
 Set up the security list for the FSS:
 ![](https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI/blob/main/images/security_list_fss.png)
 
-Modify the FSS deployment files with your FSS parametters:
+Modify the FSS deployment files with your FSS parameters:
 * [StorageClass file](ks8-deployment/storageClass.yaml)
 ![](images/storageClass_file.png)
 
