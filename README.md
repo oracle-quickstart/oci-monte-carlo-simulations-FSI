@@ -141,4 +141,4 @@ To run the client and start the calculation:
 Theroretical time of one simple task (3.000.000 Monte Carlo simulations), based on BM.HPC2.36 shape, takes 0,510ms. Simulator time is 0,517s approx.
 
 ## Destroy the simulator
-When you no longer need the deployment, you can delete the OKE cluster
+When you no longer need the deployment, you can delete the OKE cluster and FSS created.
