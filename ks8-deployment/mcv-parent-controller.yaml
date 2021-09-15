@@ -5,7 +5,7 @@ metadata:
   labels:
     component: mcv-parent
 spec:
-  replicas: 216
+  replicas: 50
   template:
     metadata:
       labels:
