@@ -56,6 +56,9 @@ Access to the URL: *loadbalancer_externalip:8000/en-US/app/search/search* and se
 Select create a new dashboard and set the configuration (this configuration will be overwrited in the next step):
 ![](https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI/blob/main/images/splunk_createdashboard.png)
 
+Select *Edit* on your dashboard and replace the content with the XML file: * [Splunk XML Dashboard](splunk/FSI_dashboard.xml)
+![](https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI/blob/main/images/splunk_replaceXML.png)
+
 
 ### Scaling
 By default the instalation is going to deploy 100 mcv-worker pods and 50 mcv-parent pods.
