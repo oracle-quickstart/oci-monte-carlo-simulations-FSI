@@ -78,6 +78,13 @@ Once identified the name of the pod, you can access to inside running:
 
     kubectl exec --stdin --tty [CLIENT_POD_NAME] -- /bin/bash
 
+### Configuration
+You can enable (by default) or disable the reporting (Splunk data loading) setting the value of *REPORTING* environment variable:
+
+    export REPORTING=[0/1]
+
+*Enabled=0, Disabled=1*
+
 ### Input files
 Inside the client pod, you can find different portfolio examples to be used as input files:
 
