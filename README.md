@@ -84,10 +84,6 @@ Inside the client pod, you can find different portfolio examples to be used as i
 * [simulation_10_mix.json](input-files/simulation_10_mix.json) --> 10 mix deals
 * [simulation_50_mix.json](input-files/simulation_50_mix.json) --> 50 mix deals
 
-To run the client and start the calculation:
-
-    python3 main.py [INPUTFILE]
-
 #### Simple or complex deal examples
 Simple deal means that number of Monte Carlo simulations will be 3.000.000 or lower and won't be splittable
 
@@ -119,6 +115,10 @@ Complex deal means that number of Monte Carlo simulations will be higher 3.000.0
     "maturity": 1
     }
 
+### Running the client
+To run the client and start the calculation:
+
+    python3 main.py [INPUTFILE]
 
 ## Results
 Theroretical time of one simple task (3.000.000 Monte Carlo simulations), based on BM.HPC2.36 shape, takes 0,510ms. Simulator time is 0,517s approx.
