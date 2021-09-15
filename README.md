@@ -32,8 +32,8 @@ In order to start the deployment, you need to access to the OKE cluster through 
     cd oci-monte-carlo-simulations-FSI/
     ./install.sh
 
-## Checking the deployment
-Please, check that the RabbitMQ host is running accessing through the WEB GUI and mcv-controller and mcv-parent-controller consumers are connected to the tasks_in and tasks_in_splittable queues respectively.
+## Checking
+You can check that the RabbitMQ host is running, accessing through the WEB GUI and mcv-controller and mcv-parent-controller consumers are connected to the tasks_in and tasks_in_splittable queues respectively.
 
 ### Access your RabbitMQ Management GUI
 Run the next command to list the load balancer service and get the external IP:
@@ -52,14 +52,15 @@ You can reach the Splunk Management GUI: *loadbalancer_externalip:8000*
 #### Create the Splunk dashboard
 
 
-### Scale workers
+### Scaling
 By default the instalation is going to deploy 100 mcv-worker pods and 50 mcv-parent pods.
 To increase the performance, ensure to set the number of pods according to the number of OCPUs in your node pool. You can scale the number of pods with:
 
     kubectl scale --replicas=[NUM_OF_REPLICAS] rc/mcv-controller
     kubectl scale --replicas=[NUM_OF_REPLICAS] rc/mcv-parent-controller
 
-## SSH to the client
+## Testing
+### SSH to the client
 For testing the simulator, first of all you need to identify the name of the client pod:
 
     kubectl get pods | grep mcv-client-controller
@@ -68,7 +69,7 @@ Once identified the name of the pod, you can access to inside running:
 
     kubectl exec --stdin --tty [CLIENT_POD_NAME] -- /bin/bash
 
-### Testing
+### Input files
 Inside the client pod, you can find different portfolio examples to be used as input files:
 
 * [simulations.json](input-files/simulations.json) --> 2 simple deals
