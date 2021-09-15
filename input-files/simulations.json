@@ -4,7 +4,7 @@
     "parent_id": 0,
     "child_id": 0,
     "level": 0,
-    "num_sims": 3000000,
+    "num_sims": 12000000,
     "underlying": 102,
     "strike": 102,
     "riskfreerate": 0.02,
@@ -17,12 +17,14 @@
     "parent_id": 1,
     "child_id": 0,
     "level": 0,
-    "num_sims": 3000000,
-    "underlying": 102,
-    "strike": 102,
+    "num_sims": 12000000,
+    "underlying": 90,
+    "strike": 90,
     "riskfreerate": 0.02,
     "volatility": 0.01,
     "maturity": 1,
     "exec_time": 0
   }
 ]
+
+
