@@ -32,30 +32,7 @@ In order to start the deployment, you need to access to the OKE cluster through 
     cd oci-monte-carlo-simulations-FSI/
     ./install.sh
 
-
-### Deployment process (install.sh script)
-Based on the architecture, first deployment step is to run the RabbitMQ node (rabbitmq-controller.yaml).
-
-Once created the controller, you need to deploy the RabbitMQ services that will allow you to identify the node by FQDN and solve possible issues with the ip rotation (rabbitmq-service.yaml).
-
-Now, your RabbitMQ host will be reacheble through "rabbitmq-service".
-By default, ports in the private subnet are not opened so, you need to set the rules in the security list to allow the communication through port 5672 fron the rest of nodes in this subnet.
-
-After that, we are setting the configuration to enable the access to the RabbitMQ WEB GUI in port 15672 and 5672 to send the valuations from out laptop. First step is to deploy the loadbalancer service that will allow foreing access through the public subnet (loadbalancer-service.yaml)
-
-One more time, you need to ensure that the firewall rules are correctly configured on the public security list for ports 15672 and 5672.
-
-Ready to deploy the Monte Carlo Vanilla containers, they will automatically connect to the RabbitMQ host (var RABBITMQ_HOST=rabbitmq-service).
-
-(mcv-controller.yaml) is going to deploy 100 pods over the node pool selected. Please, to increase the performance, ensure to set the number of pods according to the number of OCPUs in your node pool. You can scale the number of pods with:
-
-    kubectl scale --replicas=[NUM_OF_REPLICAS] rc/mcv-controller
-
-After that, this client will include all the connectors and input files required to test the solution:
-
-    kubectl create -f mcv-client-controller.yaml
-
-The solution is completelly deployed, please check that the RabbitMQ host is running accessing through the WEB GUI and all mcv-controller consumers must be connected to the tasks_in queue.
+Please, check that the RabbitMQ host is running accessing through the WEB GUI and mcv-controller and mcv-parent-controller consumers are connected to the tasks_in and tasks_in_splittable queues respectively.
 
 ### Access your RabbitMQ Management GUI
 Run the next command to list the load balancer service to get the public IP:
@@ -67,10 +44,17 @@ Run the next command to list the load balancer service to get the public IP:
 You can reach the RabbitMQ Management GUI: loadbalancer_externalip:15672
 
 ### Access your Splunk Management GUI
-You can reach the RabbitMQ Management GUI: loadbalancer_externalip:8000
+You can reach the Splunk Management GUI: loadbalancer_externalip:8000
 
 #### Create the Splunk dashboard
 
+
+### Scale workers
+By default the instalation is going to deploy 100 mcv-worker pods and 50 mcv-parent pods.
+To increase the performance, ensure to set the number of pods according to the number of OCPUs in your node pool. You can scale the number of pods with:
+
+    kubectl scale --replicas=[NUM_OF_REPLICAS] rc/mcv-controller
+    kubectl scale --replicas=[NUM_OF_REPLICAS] rc/mcv-parent-controller
 
 ## SSH to the client
 In order to test the simulator, first of all you need to identify the name of the client pod:
