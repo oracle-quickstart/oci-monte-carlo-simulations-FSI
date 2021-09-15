@@ -38,7 +38,7 @@ You can check that the RabbitMQ host is running, accessing through the WEB GUI a
 ### Access your RabbitMQ Management GUI
 Run the next command to list the load balancer service and get the external IP:
 
-    kubectl get services | grep loadbalancer
+    kubectl get services
 
 ![](https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI/blob/main/images/loadbalancer_publicip.png)
 
