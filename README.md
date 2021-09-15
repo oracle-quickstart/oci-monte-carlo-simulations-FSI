@@ -28,9 +28,10 @@ Modify the FSS deployment files with your FSS parameters:
 In order to start the deployment, you need to access to the OKE cluster through your Cloud Shell Access and clone the FSI Monte Carlo Simulator github repository and set the permission for the installation script:
 
     git clone https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI.git
-    chmod +x oci-monte-carlo-simulations-FSI/install.sh
+    chmod +x oci-monte-carlo-simulations-FSI/startSimulator.sh
+    chmod +x oci-monte-carlo-simulations-FSI/stopSimulator.sh
     cd oci-monte-carlo-simulations-FSI/
-    ./install.sh
+    ./startSimulator.sh
 
 ## Checking
 You can check that the RabbitMQ host is running, accessing through the WEB GUI and mcv-controller and mcv-parent-controller consumers are connected to the *tasks_in* and *tasks_in_splittable* queues respectively.
@@ -142,7 +143,13 @@ To increase the performance, ensure to set the number of pods according to the n
     kubectl scale --replicas=[NUM_OF_REPLICAS] rc/mcv-parent-controller
 
 ## Results
-Theroretical time of one simple task (3.000.000 Monte Carlo simulations), based on BM.HPC2.36 shape, takes 0,510ms. Simulator time is 0,517s approx.
+Theoretical time of one simple task (3.000.000 Monte Carlo simulations), based on BM.HPC2.36 shape, takes 0,510ms. Simulator time is 0,517s approx.
+
+## Stop the simulator
+To stop the simulator, please run:
+
+    cd oci-monte-carlo-simulations-FSI/
+    ./stopSimulator.sh
 
 ## Destroy the simulator
 When you no longer need the deployment, you can delete the OKE cluster and FSS created.
