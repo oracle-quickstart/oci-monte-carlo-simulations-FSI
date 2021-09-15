@@ -50,6 +50,8 @@ You can reach the RabbitMQ Management GUI: *loadbalancer_externalip:15672*
 You can reach the Splunk Management GUI: *loadbalancer_externalip:8000*
 
 #### Create the Splunk dashboard
+Access to the URL: *loadbalancer_externalip:8000/en-US/app/search/search* and select Dashboard page:
+
 
 
 ### Scaling
