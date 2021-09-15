@@ -5,7 +5,7 @@ metadata:
   labels:
     component: mcv
 spec:
-  replicas: 216
+  replicas: 100
   template:
     metadata:
       labels:
