@@ -41,10 +41,10 @@ Run the next command to list the load balancer service and get the external IP:
 
 ![](https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI/blob/main/images/loadbalancer_publicip.png)
 
-You can reach the RabbitMQ Management GUI: loadbalancer_externalip:15672
+You can reach the RabbitMQ Management GUI: *loadbalancer_externalip:15672*
 
 ### Access your Splunk Management GUI
-You can reach the Splunk Management GUI: loadbalancer_externalip:8000
+You can reach the Splunk Management GUI: *loadbalancer_externalip:8000*
 
 #### Create the Splunk dashboard
 
@@ -57,7 +57,7 @@ To increase the performance, ensure to set the number of pods according to the n
     kubectl scale --replicas=[NUM_OF_REPLICAS] rc/mcv-parent-controller
 
 ## SSH to the client
-In order to test the simulator, first of all you need to identify the name of the client pod:
+For testing the simulator, first of all you need to identify the name of the client pod:
 
     kubectl get pods | grep mcv-client-controller
 
@@ -66,21 +66,26 @@ Once identified the name of the pod, you can access to inside running:
     kubectl exec --stdin --tty [CLIENT_POD_NAME] -- /bin/bash
 
 ### Testing
-Inside the client pod, you can find these portfolio examples to be used as input files:
+Inside the client pod, you can find different portfolio examples to be used as input files:
 
 * [simulations.json](input-files/simulations.json) --> 2 simple deals
-* [simulation_50_simple.json](input-files/simulation_50_simples.json) --> 50 simple deals
+* [simulation_50_simple.json](input-files/simulation_50_simple.json) --> 50 simple deals
 * [simulation_1000_simple.json](input-files/simulation_1000_simple.json) --> 1000 simple deals
 * [simulation_30000_simple.json](input-files/simulation_30000_simple.json) --> 30000 simple deals
-
-All of them are complex portfolios (build with more than one deal). Internally, each portfolio can include simple.
+* 
+* [simulation_50_complex.json](input-files/simulation_50_complex.json) --> 50 complex deals
+* [simulation_250_complex.json](input-files/simulation_250_complex.json) --> 250 complex deals
+* [simulation_1000_complex.json](input-files/simulation_1000_complex.json) --> 1000 complex deals
+* 
+* [simulation_10_mix.json](input-files/simulation_10_mix.json) --> 10 mix deals
+* [simulation_50_mix.json](input-files/simulation_50_mix.json) --> 50 mix deals
 
 To run the client and start the calculation:
 
     python3 main.py [INPUTFILE]
 
-### Simple or complex deal examples
-Simple deal means that number of Monte Carlo simulations will be 3.000.000 or less and won't be splitable
+#### Simple or complex deal examples
+Simple deal means that number of Monte Carlo simulations will be 3.000.000 or lower and won't be splittable
 
     {
     "portfolio_id": 1000,
@@ -92,12 +97,27 @@ Simple deal means that number of Monte Carlo simulations will be 3.000.000 or le
     "strike": 102,
     "riskfreerate": 0.02,
     "volatility": 0.01,
-    "maturity": 1,
-    "exec_time": 0
+    "maturity": 1
     }
 
+Complex deal means that number of Monte Carlo simulations will be higher 3.000.000 and will be splittable in N/3.000.000 subdeals to be processed in parallel
+
+    {
+    "portfolio_id": 1000,
+    "parent_id": 0,
+    "child_id": 0,
+    "level": 0,
+    "num_sims": 12000000,
+    "underlying": 98,
+    "strike": 98,
+    "riskfreerate": 0.03,
+    "volatility": 0.02,
+    "maturity": 1
+    }
+
+
 ## Results
-Theroretical time of one simple task (3.000.000 Monte Carlo simulations), based on BM.HPC2.36 shape, takes 0,510ms. Simulator time is 0,523s approx.
+Theroretical time of one simple task (3.000.000 Monte Carlo simulations), based on BM.HPC2.36 shape, takes 0,510ms. Simulator time is 0,517s approx.
 
 ## Destroy the simulator
 When you no longer need the deployment, you can delete the OKE cluster
