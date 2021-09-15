@@ -65,13 +65,6 @@ Select *Edit* on your dashboard, replace the *Source* content with the XML file:
 
 Data is going to be automatically loaded when executions take place.
 
-### Scaling
-By default the instalation is going to deploy 100 mcv-worker pods and 50 mcv-parent pods.
-To increase the performance, ensure to set the number of pods according to the number of OCPUs in your node pool. You can scale the number of pods with:
-
-    kubectl scale --replicas=[NUM_OF_REPLICAS] rc/mcv-controller
-    kubectl scale --replicas=[NUM_OF_REPLICAS] rc/mcv-parent-controller
-
 ## Testing
 ### SSH to the client
 For testing the simulator, first of all you need to identify the name of the client pod:
@@ -140,6 +133,13 @@ Complex deal means that number of Monte Carlo simulations will be higher 3.000.0
 To run the client and start the calculation:
 
     python3 main.py [INPUTFILE]
+
+## Scaling
+By default the instalation is going to deploy 100 mcv-worker pods and 50 mcv-parent pods.
+To increase the performance, ensure to set the number of pods according to the number of OCPUs in your node pool. You can scale the number of pods with:
+
+    kubectl scale --replicas=[NUM_OF_REPLICAS] rc/mcv-controller
+    kubectl scale --replicas=[NUM_OF_REPLICAS] rc/mcv-parent-controller
 
 ## Results
 Theroretical time of one simple task (3.000.000 Monte Carlo simulations), based on BM.HPC2.36 shape, takes 0,510ms. Simulator time is 0,517s approx.
