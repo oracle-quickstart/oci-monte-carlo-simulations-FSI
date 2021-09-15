@@ -51,7 +51,10 @@ You can reach the Splunk Management GUI: *loadbalancer_externalip:8000*
 
 #### Create the Splunk dashboard
 Access to the URL: *loadbalancer_externalip:8000/en-US/app/search/search* and select Dashboard page:
+![](https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI/blob/main/images/splunk_dashboards.png)
 
+Select create a new dashboard and set the configuration (this configuration will be overwrited in the next step):
+![](https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI/blob/main/images/splunk_createdashboard.png)
 
 
 ### Scaling
