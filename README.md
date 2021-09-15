@@ -33,7 +33,7 @@ In order to start the deployment, you need to access to the OKE cluster through 
     ./install.sh
 
 ## Checking
-You can check that the RabbitMQ host is running, accessing through the WEB GUI and mcv-controller and mcv-parent-controller consumers are connected to the tasks_in and tasks_in_splittable queues respectively.
+You can check that the RabbitMQ host is running, accessing through the WEB GUI and mcv-controller and mcv-parent-controller consumers are connected to the *tasks_in* and *tasks_in_splittable* queues respectively.
 
 ### Access your RabbitMQ Management GUI
 Run the next command to list the load balancer service and get the external IP:
