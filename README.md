@@ -32,6 +32,7 @@ In order to start the deployment, you need to access to the OKE cluster through 
     cd oci-monte-carlo-simulations-FSI/
     ./install.sh
 
+## Checking the deployment
 Please, check that the RabbitMQ host is running accessing through the WEB GUI and mcv-controller and mcv-parent-controller consumers are connected to the tasks_in and tasks_in_splittable queues respectively.
 
 ### Access your RabbitMQ Management GUI
@@ -42,6 +43,8 @@ Run the next command to list the load balancer service and get the external IP:
 ![](https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI/blob/main/images/loadbalancer_publicip.png)
 
 You can reach the RabbitMQ Management GUI: *loadbalancer_externalip:15672*
+
+## Monitoring
 
 ### Access your Splunk Management GUI
 You can reach the Splunk Management GUI: *loadbalancer_externalip:8000*
