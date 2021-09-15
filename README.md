@@ -43,12 +43,14 @@ Run the next command to list the load balancer service and get the external IP:
 ![](https://github.com/oracle-quickstart/oci-monte-carlo-simulations-FSI/blob/main/images/loadbalancer_publicip.png)
 
 You can reach the RabbitMQ Management GUI: *loadbalancer_externalip:15672*
+
 Credentials: *guest/guest*
 
 ## Monitoring
 
 ### Access your Splunk Management GUI
 You can reach the Splunk Management GUI: *loadbalancer_externalip:8000*
+
 Credentials: *admin/password*
 
 #### Create the Splunk dashboard
