@@ -30,11 +30,11 @@
           <query>index="main" | 
 eval epoch_submit_time = strptime(submit_time, "%Y-%m-%d %H:%M:%S.%6N") | 
 eval epoch_start_time = strptime(start_time, "%Y-%m-%d %H:%M:%S.%6N") |
-eval epoch_onclient_time = strptime(onclient_time, "%Y-%m-%d %H:%M:%S.%6N") |
+eval epoch_end_time = strptime(onclient_time, "%Y-%m-%d %H:%M:%S.%6N") |
 eval epoch_exec_time = strptime(exec_time, "%H:%M:%S.%6N") |
 eval epoch_pending_time = epoch_start_time - epoch_submit_time |
-stats avg(epoch_pending_time) as AVG_PENDING avg(epoch_exec_time) as AVG_CPP min(epoch_submit_time) as MIN_SUBMIT MAX(epoch_onclient_time) as MAX_ONCLIENT count as TOTAL_TASKS avg(num_sims) as NUM_SIMS by portfolio_id |
-eval epoch_total_time = MAX_ONCLIENT - MIN_SUBMIT |
+stats avg(epoch_pending_time) as AVG_PENDING avg(epoch_exec_time) as AVG_CPP min(epoch_submit_time) as MIN_SUBMIT MAX(epoch_end_time) as MAX_END count as TOTAL_TASKS avg(num_sims) as NUM_SIMS by portfolio_id |
+eval epoch_total_time = MAX_END - MIN_SUBMIT |
 stats avg(epoch_total_time) as AVG_TOTAL avg(AVG_PENDING) as AVG_PENDING avg(AVG_CPP) as AVG_CPP AVG(TOTAL_TASKS) as TOTAL_TASKS avg(NUM_SIMS) as NUM_SIMS by portfolio_id |
 eval TOTAL_TIME = strftime(AVG_TOTAL, "%H:%M:%S.%6N") |
 eval AVG_CPP_TIME = strftime(AVG_CPP, "%H:%M:%S.%6N") |
