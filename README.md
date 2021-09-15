@@ -92,8 +92,7 @@ Inside the client pod, you can find different portfolio examples to be used as i
 * [simulation_50_simple.json](input-files/simulations_50_simple.json) --> 50 simple deals
 * [simulation_1000_simple.json](input-files/simulations_1000_simple.json) --> 1000 simple deals
 * [simulation_30000_simple.json](input-files/simulations_30000_simple.json) --> 30000 simple deals
-
-
+  
 * [simulation_10_complex.json](input-files/simulations_10_complex.json) --> 10 complex deals
 * [simulation_50_complex.json](input-files/simulations_50_complex.json) --> 50 complex deals
 * [simulation_250_complex.json](input-files/simulations_250_complex.json) --> 250 complex deals
