@@ -13,7 +13,7 @@ spec:
         component: kubernetes-api
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/kubernetes-api:1.0.0
+        - image: iad.ocir.io/hpc_limited_availability/kubernetes-api:1.0.1
           name: kubernetes-api-container
           env:
           - name: SPLUNK_HOST
