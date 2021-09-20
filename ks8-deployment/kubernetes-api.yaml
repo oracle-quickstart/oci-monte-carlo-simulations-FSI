@@ -28,5 +28,5 @@ spec:
             value: _json
           - name: REPORTING_FREQUENCY
             value: "300"
-      nodeSelector:
-        name: HPC
+      #nodeSelector:
+        #name: HPC
