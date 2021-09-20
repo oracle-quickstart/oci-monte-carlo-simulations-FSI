@@ -38,5 +38,5 @@ spec:
             value: _json
           - name: REPORTING
             value: "0"
-      nodeSelector:
-        name: HPC
+      #nodeSelector:
+        #name: HPC
