@@ -26,5 +26,5 @@ spec:
             value: "3000000"
           - name: RABBITMQ_PREFETCHCOUNT
             value: "5"
-      nodeSelector:
-        name: HPC
+      #nodeSelector:
+        #name: HPC
