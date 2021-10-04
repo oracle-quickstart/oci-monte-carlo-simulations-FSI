@@ -66,8 +66,10 @@ table PORTFOLIO_ID TOTAL_TIME AVG_PENDING_TIME AVG_CPP_TIME TOTAL_TASKS TASKS_TY
           <earliest>$ttime.earliest$</earliest>
           <latest>$ttime.latest$</latest>
         </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">-45</option>
         <option name="charting.chart">column</option>
         <option name="charting.drilldown">none</option>
+        <option name="height">361</option>
         <option name="refresh.display">progressbar</option>
       </chart>
     </panel>
@@ -78,13 +80,15 @@ table PORTFOLIO_ID TOTAL_TIME AVG_PENDING_TIME AVG_CPP_TIME TOTAL_TASKS TASKS_TY
         <label>PORTFOLIO_ID</label>
       </input>
       <chart>
+        <title>CALL PRICE</title>
         <search>
           <query>index="main" portfolio_id=$tportfoliot$ | eval time=round(maturity*12, 0) | 
 eval epoch_submit_time = strptime(submit_time, "%Y-%m-%d %H:%M:%S.%6N") | 
 eval formated_time=relative_time(epoch_submit_time, "+"+time+"mon") |
 eval finish_time = strftime(formated_time, "%Y-%m-%d %H:%M:%S.%6N") |
 eval _time=strptime(finish_time, "%Y-%m-%d %H:%M:%S.%6N") |
-timechart max(call_price) as "Call Price"</query>
+eval tag=strike+"_"+underlying+"_"+volatility+"_"+riskfreerate |
+timechart usenull=f span=1d max(call_price) as "Call Price" by tag useother=f</query>
           <earliest>$ttime.earliest$</earliest>
           <latest>$ttime.latest$</latest>
         </search>
@@ -99,13 +103,15 @@ timechart max(call_price) as "Call Price"</query>
   <row>
     <panel>
       <chart>
+        <title>PUT PRICE</title>
         <search>
           <query>index="main" portfolio_id=$tportfoliot$ | eval time=round(maturity*12, 0) | 
 eval epoch_submit_time = strptime(submit_time, "%Y-%m-%d %H:%M:%S.%6N") | 
 eval formated_time=relative_time(epoch_submit_time, "+"+time+"mon") |
 eval finish_time = strftime(formated_time, "%Y-%m-%d %H:%M:%S.%6N") |
 eval _time=strptime(finish_time, "%Y-%m-%d %H:%M:%S.%6N") |
-timechart max(put_price) as "Put Price"</query>
+eval tag=strike+"_"+underlying+"_"+volatility+"_"+riskfreerate |
+timechart usenull=f span=1d max(put_price) as "Put Price" by tag useother=f</query>
           <earliest>$ttime.earliest$</earliest>
           <latest>$ttime.latest$</latest>
         </search>
