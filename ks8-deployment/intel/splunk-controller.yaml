@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    component: splunk
+  name: splunk-controller
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: taskQueue
+        component: splunk
+    spec:
+      containers:
+        - image: iad.ocir.io/hpc_limited_availability/splunk:latest
+          name: splunk
+          volumeMounts:
+           - name: nfs
+             mountPath: "/opt/splunk/var/"
+          env:
+          - name: SPLUNK_PASSWORD
+            value: password
+          - name: SPLUNK_START_ARGS
+            value: --accept-license
+          ports:
+            - containerPort: 8000
+            - containerPort: 8089
+          resources:
+            limits:
+              cpu: 1000m
+      volumes:
+       - name: nfs
+         persistentVolumeClaim:
+           claimName: oke-fsspvc
+           readOnly: false

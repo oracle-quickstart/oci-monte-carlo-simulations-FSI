@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mcv-client-controller
+  labels:
+    component: mcv-client
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mcv-client
+        component: mcv-client
+    spec:
+      containers:
+        - image: iad.ocir.io/hpc_limited_availability/mcv-client:2.0.4
+          name: mcv-client-container
+          env:
+          - name: RABBITMQ_HOST
+            value: rabbitmq-service
+          - name: RABBITMQ_TASKQUEUE
+            value: tasks_in
+          - name: RABBITMQ_TASKQUEUE_SPLITTABLE
+            value: tasks_in_splittable
+          - name: MIN_SIMULATIONS
+            value: "3000000"
+          - name: CLIENT_TYPE
+            value: "0"
+          - name: SPLUNK_HOST
+            value: splunk-service
+          - name: SPLUNK_USER
+            value: admin
+          - name: SPLUNK_PASSWORD
+            value: password
+          - name: SPLUNK_INDEX
+            value: main
+          - name: SPLUNK_SOURCETYPE
+            value: _json
+          - name: REPORTING
+            value: "0"
+      #nodeSelector:
+        #name: HPC
