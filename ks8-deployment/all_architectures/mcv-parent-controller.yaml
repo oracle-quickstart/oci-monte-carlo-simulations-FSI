@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mcv-parent-controller
+  labels:
+    component: mcv-parent
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: mcv
+        component: mcv
+    spec:
+      containers:
+        - image: iad.ocir.io/hpc_limited_availability/mcv-parent-python:1.0.3
+          name: mcv-parent-container
+          env:
+          - name: RABBITMQ_HOST
+            value: rabbitmq-service
+          - name: RABBITMQ_TASKQUEUE
+            value: tasks_in
+          - name: RABBITMQ_TASKQUEUE_SPLITTABLE
+            value: tasks_in_splittable
+          - name: NUM_STEPS
+            value: "10"
+          - name: RABBITMQ_PREFETCHCOUNT
+            value: "5"
+      #nodeSelector:
+        #name: HPC
