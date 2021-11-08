@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $1 == "light" ]
+if [ "$1" == "light" ]
 then
   kubectl delete replicationcontroller mcv-controller
   kubectl delete replicationcontroller mcv-parent-controller
