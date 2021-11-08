@@ -1,12 +1,12 @@
 #!/bin/bash
 
-var = ""
+var=""
 
-if [ $1 == "all" ]
+if [ "$1" == "all" ]
 then
-  var = "all_architectures"
+  var="all_architectures"
 else
-  var = "intel"
+  var="intel"
 fi
 
 echo "Deploying OCI FSI Monte Carlo Simulator"
@@ -29,7 +29,3 @@ kubectl create -f ks8-deployment/$var/mcv-controller.yaml
 kubectl create -f ks8-deployment/$var/mcv-parent-controller.yaml
 kubectl create -f ks8-deployment/$var/mcv-client-controller.yaml
 echo "Monte Carlo Simulator core deployed"
-
-
-
-
