@@ -22,10 +22,6 @@ spec:
             value: tasks_in
           - name: RABBITMQ_TASKQUEUE_SPLITTABLE
             value: tasks_in_splittable
-          - name: MIN_SIMULATIONS
-            value: "3000000"
-          - name: CLIENT_TYPE
-            value: "0"
           - name: SPLUNK_HOST
             value: splunk-service
           - name: SPLUNK_USER
