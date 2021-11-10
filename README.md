@@ -31,7 +31,7 @@ In order to start the deployment, you need to access to the OKE cluster through 
     chmod +x oci-monte-carlo-simulations-FSI/startSimulator.sh
     chmod +x oci-monte-carlo-simulations-FSI/stopSimulator.sh
     cd oci-monte-carlo-simulations-FSI/
-    ./startSimulator.sh
+    ./startSimulator.sh 
 
 ## Checking
 You can check that the RabbitMQ host is running, accessing through the WEB GUI and mcv-controller and mcv-parent-controller consumers are connected to the *tasks_in* and *tasks_in_splittable* queues respectively.
@@ -149,7 +149,9 @@ Theoretical time of one simple task (3.000.000 Monte Carlo simulations), based o
 To stop the simulator, please run:
 
     cd oci-monte-carlo-simulations-FSI/
-    ./stopSimulator.sh
+    ./stopSimulator.sh [light|all]
+
+*Light is going to stop only the core services (Client, Workers and Parents)*
 
 ## Destroy the simulator
 When you no longer need the deployment, you can delete the OKE cluster and FSS created.
