@@ -5,8 +5,6 @@ var=""
 if [ "$1" == "all" ]
 then
   var="all_architectures"
-else
-  var="intel"
 fi
 
 echo "Deploying OCI FSI Monte Carlo Simulator"
