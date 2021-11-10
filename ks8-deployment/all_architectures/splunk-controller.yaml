@@ -13,7 +13,7 @@ spec:
         component: splunk
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/splunk:1.0.0
+        - image: iad.ocir.io/hpc_limited_availability/splunk:1.0.1
           name: splunk
           volumeMounts:
            - name: nfs
