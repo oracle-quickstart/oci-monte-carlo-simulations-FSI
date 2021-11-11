@@ -50,7 +50,7 @@ Credentials: *guest/guest*
 ## Monitoring
 
 ### Access your Splunk Monitoring Dashboard
-Access to the URL: *loadbalancer_externalip::8000/en-US/app/search/MonteCarloMonitoring*
+Access to the URL: *loadbalancer_externalip:8000/en-US/app/search/MonteCarloMonitoring*
 
 Credentials: *admin/password*
 
