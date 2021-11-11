@@ -13,7 +13,7 @@ spec:
         component: mcv
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/mcv-parent-python:1.0.5
+        - image: iad.ocir.io/hpc_limited_availability/mcv-parent-python:1.0.6
           name: mcv-parent-container
           env:
           - name: RABBITMQ_HOST
