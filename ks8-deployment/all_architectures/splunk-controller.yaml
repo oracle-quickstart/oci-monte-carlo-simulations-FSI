@@ -13,7 +13,7 @@ spec:
         component: splunk
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/splunk:1.0.1
+        - image: iad.ocir.io/hpc_limited_availability/splunk:1.0.8
           name: splunk
           volumeMounts:
            - name: nfs
@@ -32,5 +32,5 @@ spec:
       volumes:
        - name: nfs
          persistentVolumeClaim:
-           claimName: oke-fsspvc
+           claimName: splunk-fsspvc
            readOnly: false
