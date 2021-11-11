@@ -90,35 +90,39 @@ Inside the client pod, you can find different portfolio examples to be used as i
 * [simulation_50_mix.json](input-files/simulations_50_mix.json) --> 50 mix deals
 
 #### Simple or complex deal examples
-Simple deal means that number of Monte Carlo simulations will be 3.000.000 or lower and won't be splittable
+Simple deal means that number of Monte Carlo steps will be 10 or lower and won't be splittable
 
-    {
+  {
     "portfolio_id": 1000,
     "parent_id": 0,
     "child_id": 0,
     "level": 0,
-    "num_sims": 3000000,
+    "num_sims": 100, 
+    "num_steps": 10,
     "underlying": 102,
     "strike": 102,
-    "riskfreerate": 0.02,
-    "volatility": 0.01,
-    "maturity": 1
-    }
+    "riskfreerate": 0.05,
+    "volatility": 0.25,
+    "maturity": 0.0833,
+    "dividendrate": 0.02
+  }
 
-Complex deal means that number of Monte Carlo simulations will be higher 3.000.000 and will be splittable in N/3.000.000 subdeals to be processed in parallel
+Complex deal means that number of Monte Carlo steps will be higher 10 and will be splittable in N/10 subdeals to be processed in parallel
 
-    {
+  {
     "portfolio_id": 1000,
     "parent_id": 0,
     "child_id": 0,
     "level": 0,
-    "num_sims": 12000000,
-    "underlying": 98,
-    "strike": 98,
-    "riskfreerate": 0.03,
-    "volatility": 0.02,
-    "maturity": 1
-    }
+    "num_sims": 100, 
+    "num_steps": 10,
+    "underlying": 102,
+    "strike": 102,
+    "riskfreerate": 0.05,
+    "volatility": 0.25,
+    "maturity": 0.0833,
+    "dividendrate": 0.02
+  }
 
 ### Running the client
 To run the client and start the calculation:
