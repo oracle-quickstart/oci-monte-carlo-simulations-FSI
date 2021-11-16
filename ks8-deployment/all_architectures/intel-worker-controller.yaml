@@ -13,7 +13,7 @@ spec:
         component: mcs
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/mcv-python:1.0.2
+        - image: iad.ocir.io/hpc_limited_availability/intel-worker:latest
           name: intel-worker-container
           env:
           - name: RABBITMQ_HOST
