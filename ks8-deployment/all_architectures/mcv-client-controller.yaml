@@ -13,7 +13,7 @@ spec:
         component: mcv-client
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/mcv-client-python:1.0.1
+        - image: iad.ocir.io/hpc_limited_availability/intel-client:latest
           name: mcv-client-container
           env:
           - name: RABBITMQ_HOST
