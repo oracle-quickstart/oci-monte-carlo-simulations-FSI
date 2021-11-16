@@ -1,20 +1,20 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: mcv-controller
+  name: intel-worker-controller
   labels:
-    component: mcv
+    component: mcs
 spec:
   replicas: 10
   template:
     metadata:
       labels:
-        app: mcv
-        component: mcv
+        app: mcs
+        component: mcs
     spec:
       containers:
         - image: iad.ocir.io/hpc_limited_availability/mcv-python:1.0.2
-          name: mcv-container
+          name: intel-worker-container
           env:
           - name: RABBITMQ_HOST
             value: rabbitmq-service
