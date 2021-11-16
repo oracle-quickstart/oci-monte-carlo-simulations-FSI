@@ -23,7 +23,7 @@ kubectl create -f ks8-deployment/all_architectures/loadbalancer-service.yaml
 echo "LoadBalancer deployed"
 sleep 15
 
-kubectl create -f ks8-deployment/all_architectures/mcv-controller.yaml
-kubectl create -f ks8-deployment/all_architectures/mcv-parent-controller.yaml
-kubectl create -f ks8-deployment/all_architectures/mcv-client-controller.yaml
+kubectl create -f ks8-deployment/all_architectures/intel-worker-controller.yaml
+kubectl create -f ks8-deployment/all_architectures/intel-splitter-controller.yaml
+kubectl create -f ks8-deployment/all_architectures/intel-client-controller.yaml
 echo "Monte Carlo Simulator core deployed"
