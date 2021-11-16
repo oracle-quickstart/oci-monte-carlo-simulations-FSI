@@ -34,3 +34,5 @@ spec:
          persistentVolumeClaim:
            claimName: splunk-fsspvc
            readOnly: false
+      nodeSelector:
+        kubernetes.io/arch: amd64
