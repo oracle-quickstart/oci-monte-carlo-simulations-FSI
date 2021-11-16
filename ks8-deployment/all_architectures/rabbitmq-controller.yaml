@@ -9,8 +9,8 @@ spec:
   template:
     metadata:
       labels:
-        app: taskQueue
-        component: rabbitmq
+        app: mcs
+        component: mcs
     spec:
       containers:
         - image: iad.ocir.io/hpc_limited_availability/rabbitmq:latest
@@ -20,6 +20,6 @@ spec:
             - containerPort: 15672
           resources:
             limits:
-              cpu: 1000m
-      #nodeSelector:
-        #name: HPC
+              cpu: 2000m
+      nodeSelector:
+        kubernetes.io/arch: amd64
