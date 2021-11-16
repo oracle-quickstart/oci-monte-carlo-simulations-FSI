@@ -26,4 +26,9 @@ sleep 15
 kubectl create -f ks8-deployment/all_architectures/intel-worker-controller.yaml
 kubectl create -f ks8-deployment/all_architectures/intel-splitter-controller.yaml
 kubectl create -f ks8-deployment/all_architectures/intel-client-controller.yaml
+kubectl create -f ks8-deployment/all_architectures/arm-worker-controller.yaml
+kubectl create -f ks8-deployment/all_architectures/arm-splitter-controller.yaml
+kubectl create -f ks8-deployment/all_architectures/arm-client-controller.yaml
+
+
 echo "Monte Carlo Simulator core deployed"
