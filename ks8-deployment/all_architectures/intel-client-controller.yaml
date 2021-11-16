@@ -1,20 +1,20 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: mcv-client-controller
+  name: intel-client-controller
   labels:
-    component: mcv-client
+    component: intel-client
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: mcv-client
-        component: mcv-client
+        app: mcs
+        component: mcs
     spec:
       containers:
         - image: iad.ocir.io/hpc_limited_availability/intel-client:latest
-          name: mcv-client-container
+          name: intel-client-container
           env:
           - name: RABBITMQ_HOST
             value: rabbitmq-service
@@ -36,5 +36,5 @@ spec:
             value: "0"
           - name: NUM_STEPS
             value: "10"
-      #nodeSelector:
-        #name: HPC
+      nodeSelector:
+        kubernetes.io/arch: amd64
