@@ -13,7 +13,7 @@ spec:
         component: mcs
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/intel-splitter:latest
+        - image: iad.ocir.io/hpc_limited_availability/arm-splitter:latest
           name: arm-splitter-container
           env:
           - name: RABBITMQ_HOST
