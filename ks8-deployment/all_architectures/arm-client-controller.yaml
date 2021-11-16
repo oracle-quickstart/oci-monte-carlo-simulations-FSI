@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: intel-client-controller
+  name: arm-client-controller
   labels:
-    component: intel-client
+    component: arm-client
 spec:
   replicas: 1
   template:
@@ -13,8 +13,8 @@ spec:
         component: mcs
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/intel-client:latest
-          name: intel-client-container
+        - image: iad.ocir.io/hpc_limited_availability/arm-client:latest
+          name: arm-client-container
           env:
           - name: RABBITMQ_HOST
             value: rabbitmq-service
