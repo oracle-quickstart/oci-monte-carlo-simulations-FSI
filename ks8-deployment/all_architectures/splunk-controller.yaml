@@ -9,11 +9,11 @@ spec:
   template:
     metadata:
       labels:
-        app: taskQueue
-        component: splunk
+        app: mcs
+        component: mcs
     spec:
       containers:
-        - image: iad.ocir.io/hpc_limited_availability/splunk:1.0.8
+        - image: iad.ocir.io/hpc_limited_availability/splunk:latest
           name: splunk
           volumeMounts:
            - name: nfs
@@ -28,7 +28,7 @@ spec:
             - containerPort: 8089
           resources:
             limits:
-              cpu: 1000m
+              cpu: 4000m
       volumes:
        - name: nfs
          persistentVolumeClaim:
