@@ -8,6 +8,7 @@ Tested shapes:
 
     VM.Standard.*
     BM.HPC.*
+    VM.Standard.A1.*
     
 Considering to access the cluster for monitoring, configuring and testing from you laptop, OKE cluster should be deployed within public API endpoint and workers in private mode.
 
