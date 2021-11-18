@@ -10,7 +10,7 @@ spec:
     metadata:
       labels:
         app: mcs
-        component: mcs
+        component: splunk
     spec:
       containers:
         - image: iad.ocir.io/hpc_limited_availability/splunk:latest
