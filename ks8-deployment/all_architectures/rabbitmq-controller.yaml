@@ -10,7 +10,7 @@ spec:
     metadata:
       labels:
         app: mcs
-        component: mcs
+        component: rabbitmq
     spec:
       containers:
         - image: iad.ocir.io/hpc_limited_availability/rabbitmq:latest
