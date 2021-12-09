@@ -1,4 +1,17 @@
 <form>
+  <label>MonteCarloMonitoring</label>
+  <fieldset submitButton="false">
+    <input type="text" token="tportfoliot">
+      <label>PORTFOLIO ID</label>
+    </input>
+    <input type="time" token="ttime">
+      <label>TIME</label>
+      <default>
+        <earliest>@w0</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
   <row>
     <panel>
       <title>DEALS</title>
@@ -7,10 +20,11 @@
           <query>index="main" | 
 eval DEALS = num_steps / 10 | 
 stats sum(DEALS) as DEALS</query>
-          <earliest>@w0</earliest>
-          <latest>now</latest>
+          <earliest>$ttime.earliest$</earliest>
+          <latest>$ttime.latest$</latest>
         </search>
         <option name="drilldown">none</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
         <option name="refresh.display">progressbar</option>
       </single>
     </panel>
@@ -21,8 +35,8 @@ stats sum(DEALS) as DEALS</query>
           <query>index="main" | 
 eval MCVALUATIONS = num_steps * num_sims | 
 stats sum(MCVALUATIONS) as "MONTE CARLO VALUATIONS"</query>
-          <earliest>@w0</earliest>
-          <latest>now</latest>
+          <earliest>$ttime.earliest$</earliest>
+          <latest>$ttime.latest$</latest>
         </search>
         <option name="drilldown">none</option>
         <option name="refresh.display">progressbar</option>
@@ -51,8 +65,8 @@ eval DATE = strftime(SUBMIT_TIME, "%Y-%m-%d %H:%M:%S") |
 rename portfolio_id as PORTFOLIO_ID |
 table DATE PORTFOLIO_ID TOTAL_TIME PENDING_TIME EXEC_TIME TASKS TYPE |
 sort by DATE</query>
-          <earliest>@w0</earliest>
-          <latest>now</latest>
+          <earliest>$ttime.earliest$</earliest>
+          <latest>$ttime.latest$</latest>
           <sampleRatio>1</sampleRatio>
         </search>
         <option name="count">20</option>
@@ -74,8 +88,8 @@ sort by DATE</query>
           <query>index=main | 
 eval computeHost=split(worker, ",")|
 stats count as Total by computeHost</query>
-          <earliest>@d</earliest>
-          <latest>now</latest>
+          <earliest>$ttime.earliest$</earliest>
+          <latest>$ttime.latest$</latest>
         </search>
         <option name="charting.axisLabelsX.majorLabelStyle.rotation">-45</option>
         <option name="charting.axisTitleX.visibility">collapsed</option>
@@ -87,12 +101,6 @@ stats count as Total by computeHost</query>
       </chart>
     </panel>
   </row>
-  <label>MonteCarloMonitoring</label>
-  <fieldset submitButton="false">
-    <input type="text" token="tportfoliot">
-      <label>PORTFOLIO ID</label>
-    </input>
-  </fieldset>
   <row>
     <panel>
       <title>OPTION PRICE</title>
@@ -100,8 +108,8 @@ stats count as Total by computeHost</query>
         <search>
           <query>index=main portfolio_id=$tportfoliot$ |
 stats max(option_price) as price</query>
-          <earliest>@w0</earliest>
-          <latest>now</latest>
+          <earliest>$ttime.earliest$</earliest>
+          <latest>$ttime.latest$</latest>
           <sampleRatio>1</sampleRatio>
         </search>
         <option name="colorBy">value</option>
@@ -140,8 +148,8 @@ eval sub_id=mvindex(split,1) |
 eval value=mvindex(split,2) |
 table id, sub_id, value |
 chart first(value) over sub_id by id useother=false limit=0</query>
-          <earliest>@w0</earliest>
-          <latest>now</latest>
+          <earliest>$ttime.earliest$</earliest>
+          <latest>$ttime.latest$</latest>
         </search>
         <option name="charting.axisTitleX.visibility">collapsed</option>
         <option name="charting.chart">line</option>
@@ -167,8 +175,8 @@ eval id=mvindex(split,0) |
 eval value=mvindex(split,1) |
 table id, value, portfolio_id | 
 chart first(value) over id by portfolio_id useother=false limit=0</query>
-          <earliest>@w0</earliest>
-          <latest>now</latest>
+          <earliest>$ttime.earliest$</earliest>
+          <latest>$ttime.latest$</latest>
         </search>
         <option name="charting.axisLabelsY2.majorUnit">1</option>
         <option name="charting.axisTitleX.visibility">collapsed</option>
