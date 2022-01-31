@@ -1,0 +1,36 @@
+---
+- name: Modify default config
+  hosts: localhost
+  gather_facts: true
+  strategy: free
+  environment: "{{ ansible_environment | default({}) }}"
+  tasks:
+
+    - name: Copy file with owner and permissions
+      ansible.builtin.copy:
+        src: /tmp/props.conf
+        dest: /opt/splunk/etc/system/default/props.conf
+        owner: splunk
+        group: splunk
+
+    - name: 2 Copy file with owner and permissions
+      ansible.builtin.copy:
+        src: /tmp/limits.conf
+        dest: /opt/splunk/etc/system/default/limits.conf
+        owner: splunk
+        group: splunk
+    
+    - name: Create directory
+      ansible.builtin.file:
+        state: directory
+        recurse: yes
+        path: /opt/splunk/etc/apps/search/local/data/ui/views
+        owner: splunk
+        group: splunk
+
+    - name: 3 Copy file with owner and permissions
+      ansible.builtin.copy:
+        src: /tmp/MonteCarloMonitoring.xml
+        dest: /opt/splunk/etc/apps/search/local/data/ui/views/MonteCarloMonitoring.xml
+        owner: splunk
+        group: splunk
