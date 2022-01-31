@@ -8,7 +8,7 @@ RUN python3 -m pip install cython
 RUN python3 -m pip install splunk-sdk
 RUN python3 -m pip install numpy --upgrade
 WORKDIR /montecarlo
-ADD mainClient.py /montecarlo/
-ADD runClient.py /montecarlo/
-ADD simulations* /montecarlo/
+ADD python_code/mainClient.py /montecarlo/
+ADD python_code/runClient.py /montecarlo/
+ADD python_code/simulations* /montecarlo/
 ENTRYPOINT ["tail", "-f", "/dev/null"]

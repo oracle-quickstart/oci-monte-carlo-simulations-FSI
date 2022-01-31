@@ -7,7 +7,7 @@ RUN python3 -m pip install pika
 RUN python3 -m pip install cython
 RUN python3 -m pip install numpy --upgrade
 WORKDIR /montecarlo
-ADD mainSplitter.py /montecarlo/
-ADD runSplitter.py /montecarlo/
+ADD python_code/mainSplitter.py /montecarlo/
+ADD python_code/runSplitter.py /montecarlo/
 CMD ["mainSplitter.py"]
 ENTRYPOINT ["python3"]
