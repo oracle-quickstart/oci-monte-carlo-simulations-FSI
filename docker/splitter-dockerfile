@@ -1,0 +1,13 @@
+FROM redhat/ubi8-init
+RUN mkdir /montecarlo
+RUN yum install gcc-c++ -y 
+RUN yum install python3 -y
+RUN yum install python3-devel -y
+RUN python3 -m pip install pika
+RUN python3 -m pip install cython
+RUN python3 -m pip install numpy --upgrade
+WORKDIR /montecarlo
+ADD mainSplitter.py /montecarlo/
+ADD runSplitter.py /montecarlo/
+CMD ["mainSplitter.py"]
+ENTRYPOINT ["python3"]
