@@ -1,7 +1,8 @@
-## EVITAR TRUNCADO DE DATOS AL ENVIAR AL HEC:
-# https://community.splunk.com/t5/Getting-Data-In/http-event-collector-truncates-event-to-10-000-characters/m-p/509378
-# /opt/splunk/bin/splunk btool props list _json --debug | grep -i truncate
-# /opt/splunk/etc/system/default/props.conf TRUNCATE = 10000000
+# FSI Monte Carlo Simulator - Splunk configuration
+
+## How to avoid data trucation in HEC:
+Splunk documentation: ![](https://community.splunk.com/t5/Getting-Data-In/http-event-collector-truncates-event-to-10-000-characters/m-p/509378)
+Edit file: docker-splunk-develop/props.conf and set: *TRUNCATE = 10000000*
 
 ## EVITAR TRUNCADO DE DATOS EN EL mvexpand
 # vi /opt/splunk/etc/system/default/limits.conf
