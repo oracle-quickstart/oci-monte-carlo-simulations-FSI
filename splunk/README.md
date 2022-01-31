@@ -2,25 +2,22 @@
 
 ## How to avoid data trucation in HEC:
 Splunk documentation: ![](https://community.splunk.com/t5/Getting-Data-In/http-event-collector-truncates-event-to-10-000-characters/m-p/509378)
-Edit file: docker-splunk-develop/props.conf and set: *TRUNCATE = 10000000*
+Edit file: docker-splunk-develop/props.conf and set:
 
-## EVITAR TRUNCADO DE DATOS EN EL mvexpand
-# vi /opt/splunk/etc/system/default/limits.conf
-# [mvexpand]
-# max_mem_usage_mb = 30720
-# max_mem_usage_mb = 100000
+    TRUNCATE = 10000000
 
-## Para incluir un nuevo fichero en la imagen (ej: props.conf)
-# Editar el Dockerfile de la ruta: docker-splunk-develop/splunk/common-files/Dockerfile
+## How to avoid data trucation when running mvexpand:
+Edit file: docker-splunk-develop/limits.conf and set:
 
-## Para realizar una llamada dentro del contenedor a su inicio
-# Editar el fichero: docker-splunk-develop/splunk/common-files/entrypoint.sh
+    [mvexpand]
+    max_mem_usage_mb = 30720
+    max_mem_usage_mb = 100000
 
-## Ejecucion del contenedor en maquina de compilacion
-docker run -d -p 8000:8000 -e "SPLUNK_PASSWORD=password" -e "SPLUNK_START_ARGS=--accept-license" -it --name so2 splunk-redhat-8:latest
+## How to include new configuration files in Splunk image (example: props.conf)
+Edit file: docker-splunk-develop/splunk/common-files/Dockerfile and set new add files
 
-## Documentacion de la construccion del contenedor redhad based
+## How to include new commands on container ejecution entrypoint
+Edit file: docker-splunk-develop/splunk/common-files/entrypoint.sh
+
+## Container build documentation
 https://splunk.github.io/docker-splunk/ADVANCED.html#configure-splunk
-
-## Ruta de copiado del dashboard: apps/search/local/data/ui/views/cacahuete.xml
-## Acceso al dashboard: http://150.136.4.128:8000/en-US/app/search/cacahuete
