@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: arm-client-controller
+  labels:
+    component: arm-client
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mcs
+        component: mcs
+    spec:
+      containers:
+        - image: iad.ocir.io/hpc_limited_availability/arm-client:latest
+          name: arm-client-container
+          env:
+          - name: RABBITMQ_HOST
+            value: rabbitmq-service
+          - name: RABBITMQ_TASKQUEUE
+            value: tasks_in
+          - name: RABBITMQ_TASKQUEUE_SPLITTABLE
+            value: tasks_in_splittable
+          - name: SPLUNK_HOST
+            value: splunk-service
+          - name: SPLUNK_USER
+            value: admin
+          - name: SPLUNK_PASSWORD
+            value: password
+          - name: SPLUNK_INDEX
+            value: main
+          - name: SPLUNK_SOURCETYPE
+            value: _json
+          - name: REPORTING
+            value: "0"
+          - name: NUM_STEPS
+            value: "10"
+      nodeSelector:
+        kubernetes.io/arch: arm64

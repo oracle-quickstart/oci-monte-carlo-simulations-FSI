@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: arm-splitter-controller
+  labels:
+    component: arm-splitter
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: mcs
+        component: mcs
+    spec:
+      containers:
+        - image: iad.ocir.io/hpc_limited_availability/arm-splitter:latest
+          name: arm-splitter-container
+          env:
+          - name: RABBITMQ_HOST
+            value: rabbitmq-service
+          - name: RABBITMQ_TASKQUEUE
+            value: tasks_in
+          - name: RABBITMQ_TASKQUEUE_SPLITTABLE
+            value: tasks_in_splittable
+          - name: NUM_STEPS
+            value: "10"
+          - name: RABBITMQ_PREFETCHCOUNT
+            value: "5"
+      nodeSelector:
+        kubernetes.io/arch: arm64
