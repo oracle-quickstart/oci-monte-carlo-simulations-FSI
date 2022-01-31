@@ -140,3 +140,7 @@ To stop the simulator, please run:
 
 ## Destroy the simulator
 When you no longer need the deployment, you can delete the OKE cluster and FSS created.
+
+## Compilation
+To copile the Monte Carlo simulator, you just need to run the compile.sh setting the argument as "arm" or "intel" depending on your needs.
+Automatically, the containers will be created and pushed to the OCI image repository.
