@@ -6,6 +6,8 @@ RUN yum install python3-devel -y
 RUN python3 -m pip install pika
 RUN python3 -m pip install cython
 RUN python3 -m pip install numpy --upgrade
+ENV PYTHONUNBUFFERED=1 
+ENV PYTHONIOENCODING=UTF-8
 WORKDIR /montecarlo
 ADD python_code/mainWorker.py /montecarlo/
 ADD python_code/runWorker.py /montecarlo/

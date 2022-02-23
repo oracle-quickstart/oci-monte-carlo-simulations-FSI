@@ -7,6 +7,8 @@ RUN python3 -m pip install pika
 RUN python3 -m pip install cython
 RUN python3 -m pip install splunk-sdk
 RUN python3 -m pip install numpy --upgrade
+ENV PYTHONUNBUFFERED=1 
+ENV PYTHONIOENCODING=UTF-8
 WORKDIR /montecarlo
 ADD python_code/mainClient.py /montecarlo/
 ADD python_code/runClient.py /montecarlo/
